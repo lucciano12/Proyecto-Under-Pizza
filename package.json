@@ -1,0 +1,23 @@
+{
+  "name": "proyecto-under-pizza",
+  "version": "1.0.0",
+  "description": "Proyecto con GULP, SASS y HTML",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucciano12/Proyecto-Under-Pizza.git"
+  },
+  "author": "Lucciano Prado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucciano12/Proyecto-Under-Pizza/issues"
+  },
+  "homepage": "https://github.com/lucciano12/Proyecto-Under-Pizza#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "sass": "^1.64.2"
+  }
+}
