@@ -1,23 +1,18 @@
 {
-  "name": "proyecto-under-pizza",
+  "name": "proyecto-rotulos-qr",
   "version": "1.0.0",
-  "description": "Proyecto con GULP, SASS y HTML",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:api": "npm run start:dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:pwa": "npm run dev --workspace=apps/pwa",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lucciano12/Proyecto-Under-Pizza.git"
-  },
-  "author": "Lucciano Prado",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lucciano12/Proyecto-Under-Pizza/issues"
-  },
-  "homepage": "https://github.com/lucciano12/Proyecto-Under-Pizza#readme",
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "sass": "^1.64.2"
-  }
+  "author": "Antigravity",
+  "license": "ISC"
 }
