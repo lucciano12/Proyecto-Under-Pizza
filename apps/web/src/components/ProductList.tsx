@@ -35,8 +35,7 @@ export const ProductList: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Products</h2>
+    <div className="product-list p-4">
       <div className="product-grid">
         {products.map((p) => (
           <div key={p._id} className="product-card">

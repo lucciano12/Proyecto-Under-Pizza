@@ -12,10 +12,13 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="title">Rótulos QR Dashboard</h1>
       <div className="dashboard">
-        <CreateProductForm onSuccess={handleSuccess} />
-        <ProductList key={refreshKey} />
+        <div className="center-column">
+          <CreateProductForm onSuccess={handleSuccess} />
+        </div>
+        <div className="right-column">
+          <ProductList key={refreshKey} />
+        </div>
       </div>
     </div>
   );
