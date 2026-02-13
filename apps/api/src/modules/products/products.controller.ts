@@ -1,17 +1,20 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) { }
 
-  @Post()
+  @Post('createProduct')
+  @ApiOperation({ summary: 'Create a new product' })
+  
   create(@Body() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
 
-  @Get()
+  @Get('findAllProducts')
   findAll() {
     return this.productsService.findAll();
   }

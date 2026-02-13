@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategorySchema = exports.Category = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const swagger_1 = require("@nestjs/swagger");
 let Category = class Category {
     name;
     description;
@@ -18,10 +19,18 @@ let Category = class Category {
 exports.Category = Category;
 __decorate([
     (0, mongoose_1.Prop)({ required: true, unique: true }),
+    (0, swagger_1.ApiProperty)({
+        description: 'Name of the category',
+        example: 'Beverages',
+    }),
     __metadata("design:type", String)
 ], Category.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
+    (0, swagger_1.ApiProperty)({
+        description: 'Description of the category',
+        example: 'All kinds of drinks, including soft drinks, juices, and alcoholic beverages.',
+    }),
     __metadata("design:type", String)
 ], Category.prototype, "description", void 0);
 exports.Category = Category = __decorate([

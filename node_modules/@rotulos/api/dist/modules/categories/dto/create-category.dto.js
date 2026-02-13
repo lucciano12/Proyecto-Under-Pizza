@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCategoryDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateCategoryDto {
     name;
@@ -19,11 +20,19 @@ exports.CreateCategoryDto = CreateCategoryDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)({
+        description: 'Name of the category',
+        example: 'Beverages',
+    }),
     __metadata("design:type", String)
 ], CreateCategoryDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
+    (0, swagger_1.ApiProperty)({
+        description: 'Description of the category',
+        example: 'All kinds of drinks, including soft drinks, juices, and alcoholic beverages.',
+    }),
     __metadata("design:type", String)
 ], CreateCategoryDto.prototype, "description", void 0);
 //# sourceMappingURL=create-category.dto.js.map

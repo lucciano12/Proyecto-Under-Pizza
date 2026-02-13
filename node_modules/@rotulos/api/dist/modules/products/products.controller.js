@@ -16,6 +16,7 @@ exports.ProductsController = void 0;
 const common_1 = require("@nestjs/common");
 const products_service_1 = require("./products.service");
 const create_product_dto_1 = require("./dto/create-product.dto");
+const swagger_1 = require("@nestjs/swagger");
 let ProductsController = class ProductsController {
     productsService;
     constructor(productsService) {
@@ -37,14 +38,15 @@ let ProductsController = class ProductsController {
 };
 exports.ProductsController = ProductsController;
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('createProduct'),
+    (0, swagger_1.ApiOperation)({ summary: 'Create a new product' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_product_dto_1.CreateProductDto]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "create", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('findAllProducts'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
