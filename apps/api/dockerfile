@@ -1,0 +1,25 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copiar package.json raíz y de todos los workspaces
+COPY package*.json ./
+COPY packages/shared/package*.json ./packages/shared/
+COPY apps/api/package*.json ./apps/api/
+
+# Instalar TODAS las dependencias del monorepo
+RUN npm install
+
+# Copiar código fuente completo
+COPY packages/ ./packages/
+COPY apps/api/ ./apps/api/
+
+# 1. Compilar shared PRIMERO (la API depende de él)
+RUN npm run build --workspace=packages/shared
+
+# 2. Compilar la API después
+RUN npm run build --workspace=apps/api
+
+EXPOSE 3000
+
+CMD ["node", "apps/api/dist/main.js"]

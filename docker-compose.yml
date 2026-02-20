@@ -1,4 +1,19 @@
 services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: underpizza-api
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo:27017/rotulos-qr
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+    restart: always
+
   mongo:
     image: mongo:latest
     container_name: mongo-under-pizza
