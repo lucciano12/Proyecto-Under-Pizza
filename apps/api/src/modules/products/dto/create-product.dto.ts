@@ -5,9 +5,18 @@ import {
   Min,
   IsOptional,
   IsBoolean,
-  IsDateString,
+  matches,
+  Matches,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
+
+//convierte  "dd/mm/yyyy" a Date valido para MongoDB
+const parseDdMmYyyy = (value: string): string => {
+  if (!value) return value; // Si no es, devuelve el valor original (undefined o null)
+  const [day, month, year] = value.split('/');
+  return new Date(`${year}-${month}-${day}`).toISOString();
+};
 
 export class CreateProductDto {
   @IsString()
@@ -45,20 +54,26 @@ export class CreateProductDto {
   }) //Indica si el producto está activo o inactivo, opcional y por defecto true
   isActive?: boolean;
 
-  @IsDateString()
   @IsOptional()
+  @Matches(/^\d{2}\/\d{2}\/\d{4}$/, {
+    message: 'issuedAt must be in format dd/mm/yyyy',
+  })
   @ApiProperty({
     description: 'Date when the product was issued',
     required: false,
+    example: '19/09/2026',
   })
   //Fecha en la que el producto fue emitido, opcional y por defecto la fecha actual
   issuedAt?: string;
 
-  @IsDateString()
   @IsOptional()
+  @Matches(/^\d{2}\/\d{2}\/\d{4}$/, {
+    message: 'expiresAt must be in format dd/mm/yyyy',
+  })
   @ApiProperty({
     description: 'Expiration date of the product',
     required: false,
+    example: '19/09/2026',
   })
   //Fecha de expiración del producto, opcional y por defecto 1 año después de la fecha de emisión
   expiresAt?: string;

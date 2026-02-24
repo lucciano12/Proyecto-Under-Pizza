@@ -12,6 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateProductDto = void 0;
 const class_validator_1 = require("class-validator");
 const swagger_1 = require("@nestjs/swagger");
+const parseDdMmYyyy = (value) => {
+    if (!value)
+        return value;
+    const [day, month, year] = value.split('/');
+    return new Date(`${year}-${month}-${day}`).toISOString();
+};
 class CreateProductDto {
     name;
     category;
@@ -63,20 +69,26 @@ __decorate([
     __metadata("design:type", Boolean)
 ], CreateProductDto.prototype, "isActive", void 0);
 __decorate([
-    (0, class_validator_1.IsDateString)(),
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.Matches)(/^\d{2}\/\d{2}\/\d{4}$/, {
+        message: 'issuedAt must be in format dd/mm/yyyy',
+    }),
     (0, swagger_1.ApiProperty)({
         description: 'Date when the product was issued',
         required: false,
+        example: '19/09/2026',
     }),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "issuedAt", void 0);
 __decorate([
-    (0, class_validator_1.IsDateString)(),
     (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.Matches)(/^\d{2}\/\d{2}\/\d{4}$/, {
+        message: 'expiresAt must be in format dd/mm/yyyy',
+    }),
     (0, swagger_1.ApiProperty)({
         description: 'Expiration date of the product',
         required: false,
+        example: '19/09/2026',
     }),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "expiresAt", void 0);
