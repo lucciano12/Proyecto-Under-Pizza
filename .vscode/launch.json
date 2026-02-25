@@ -2,18 +2,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug WEB (Chrome)",
-      "type": "pwa-chrome",
+      "type": "node",
       "request": "launch",
-      "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}"
-    },
-    {
-      "name": "Debug PWA (Chrome)",
-      "type": "pwa-chrome",
-      "request": "launch",
-      "url": "http://localhost:5174",
-      "webRoot": "${workspaceFolder}"
+      "name": "Debug API - NestJS",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:debug", "--", "--app", "api"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "restart": true
     }
   ]
 }

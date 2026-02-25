@@ -27,10 +27,20 @@ let ProductsService = class ProductsService {
         this.productModel = productModel;
         this.movementsService = movementsService;
     }
+    parseDdMmYyyy(value) {
+        const [day, month, year] = value.split('/');
+        return new Date(`${year}-${month}-${day}T00:00:00.000Z`);
+    }
     async create(createProductDto) {
         const product = new this.productModel({
             ...createProductDto,
             qrId: (0, uuid_1.v4)(),
+            issuedAt: createProductDto.issuedAt
+                ? this.parseDdMmYyyy(createProductDto.issuedAt)
+                : undefined,
+            expirationDate: createProductDto.expiresAt
+                ? this.parseDdMmYyyy(createProductDto.expiresAt)
+                : undefined,
         });
         return product.save();
     }

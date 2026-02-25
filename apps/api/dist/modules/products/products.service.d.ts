@@ -6,6 +6,7 @@ export declare class ProductsService {
     private productModel;
     private movementsService;
     constructor(productModel: Model<ProductDocument>, movementsService: MovementsService);
+    private parseDdMmYyyy;
     create(createProductDto: CreateProductDto): Promise<Product>;
     findAll(): Promise<Product[]>;
     findByQr(qrId: string): Promise<any>;
