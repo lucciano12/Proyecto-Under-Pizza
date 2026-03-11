@@ -20,6 +20,7 @@ async function bootstrap() {
         .addTag('categorías', 'Gestión de categorías')
         .addTag('movimientos', 'Registro de movimientos de productos')
         .addServer('http://localhost:3000', 'Desarrollo local')
+        .addServer('http://3.17.152.56:3000', 'Produccion EC2')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api/docs', app, document, {
@@ -34,6 +35,7 @@ async function bootstrap() {
     await app.listen(port);
     console.log(`\n🚀 API corriendo en: http://localhost:${port}`);
     console.log(`📚 Swagger Docs: http://localhost:${port}/api/docs\n`);
+    console.log((`📚 Swagger Docs: http://3.17.152.56:${port}/api/docs\n`));
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

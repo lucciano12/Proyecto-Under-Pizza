@@ -29,7 +29,7 @@ async function bootstrap() {
     .addTag('categorías', 'Gestión de categorías')
     .addTag('movimientos', 'Registro de movimientos de productos')
     .addServer('http://localhost:3000', 'Desarrollo local')
-    .addServer('https://3.17.152.56:3000', 'Produccion EC2')
+    .addServer('http://3.17.152.56:3000', 'Produccion EC2')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
@@ -42,11 +42,12 @@ async function bootstrap() {
     `,
   });
 
-  const port = process.env.PORT ?? 3000;
+  const port = process.env.PORT ?? 3000; // Permite configurar el puerto a través de una variable de entorno, con un valor por defecto de 3000
   await app.listen(port);
 
   // Logs informativos
   console.log(`\n🚀 API corriendo en: http://localhost:${port}`);
   console.log(`📚 Swagger Docs: http://localhost:${port}/api/docs\n`);
+  console.log ((`📚 Swagger Docs: http://3.17.152.56:${port}/api/docs\n`)
 }
 bootstrap();
