@@ -31,7 +31,7 @@ export class ProductsService {
       issuedAt: createProductDto.issuedAt // Asignamos la fecha de emision,
         ? this.parseDdMmYyyy(createProductDto.issuedAt) //Si se proporciona una fecha de emision, la convertimos a Date con la funcion parseDdMmYyyy
         : undefined, //Si no, dejamos el campo como undefined
-      expirationDate: createProductDto.expiresAt //Asignamos la fecha de vencimiento
+      expiresAt: createProductDto.expiresAt //Asignamos la fecha de vencimiento
         ? this.parseDdMmYyyy(createProductDto.expiresAt) //Si se proporciona una fecha de vencimiento, la convertimos a Date con la funcion parseDdMmYyyy
         : undefined, //Si no, dejamos el campo como undefined
     });
